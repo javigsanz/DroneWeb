@@ -1,0 +1,21 @@
+# Compiled output
+/dist
+/tmp
+/out-tsc
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# IDE
+/.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+
+# Misc
+/.angular
+/.sass-cache
+/coverage
