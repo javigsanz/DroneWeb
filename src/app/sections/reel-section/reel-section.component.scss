@@ -1,0 +1,113 @@
+.reel {
+  padding-block: clamp(4rem, 10vw, 7rem);
+
+  &__grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.reel-card {
+  position: relative;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 1.2rem;
+  padding: 0;
+  overflow: hidden;
+  min-height: 330px;
+  box-shadow: var(--shadow-soft);
+  background: #0f0f11;
+  transition: transform 420ms var(--ease-premium), filter 420ms var(--ease-premium);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms var(--ease-premium), filter 600ms var(--ease-premium);
+    filter: brightness(0.7);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 55%);
+  }
+
+  &__category,
+  &__title {
+    position: absolute;
+    left: 1rem;
+    z-index: 1;
+  }
+
+  &__category {
+    bottom: 3.3rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__title {
+    bottom: 1.3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.01);
+
+    img {
+      transform: scale(1.04);
+      filter: brightness(0.85);
+    }
+  }
+}
+
+.reel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 100%);
+    padding: 1.1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #080808;
+
+    header {
+      margin-bottom: 0.8rem;
+
+      h3 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        margin-top: 0.4rem;
+      }
+    }
+
+    video {
+      width: 100%;
+      border-radius: 0.8rem;
+      margin-bottom: 0.9rem;
+      background: black;
+    }
+  }
+}

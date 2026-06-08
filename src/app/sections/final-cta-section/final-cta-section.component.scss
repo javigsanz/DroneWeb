@@ -1,0 +1,22 @@
+.final-cta {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+
+  &__box {
+    border-radius: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(10, 132, 255, 0.22), transparent 40%),
+      linear-gradient(140deg, #070709 20%, #111115 100%);
+
+    h2 {
+      max-width: 20ch;
+      font-size: clamp(1.7rem, 4vw, 3.2rem);
+      line-height: 1.08;
+    }
+  }
+}

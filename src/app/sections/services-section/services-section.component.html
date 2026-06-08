@@ -1,0 +1,22 @@
+<section class="services" aria-labelledby="services-title">
+  <div class="container">
+    <header class="section-heading" appRevealOnScroll>
+      <h2 id="services-title">Servicios</h2>
+      <p>Soluciones de grabacion aerea para proyectos que exigen precision, estetica y resultados.</p>
+    </header>
+
+    <div class="services__grid grid">
+      @for (service of services; track service.id; let i = $index) {
+        <article class="service-card" appRevealOnScroll [revealDelay]="i * 60">
+          <div class="service-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path [attr.d]="service.icon"></path>
+            </svg>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+<section class="hero" aria-labelledby="hero-title">
+  <video
+    class="hero__video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    [attr.aria-label]="'Video aereo de fondo'"
+  >
+    <source [src]="heroVideo" type="video/mp4" />
+  </video>
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="container hero__content" appParallax [speed]="0.09">
+    <p class="hero__eyebrow" appRevealOnScroll>Produccion aerea premium</p>
+    <h1 id="hero-title" appRevealOnScroll [revealDelay]="120">
+      Capturamos el mundo desde otra perspectiva
+    </h1>
+    <p class="hero__subtitle" appRevealOnScroll [revealDelay]="220">
+      Produccion audiovisual aerea profesional para empresas, eventos, inmobiliarias y marcas.
+    </p>
+
+    <div class="hero__actions" appRevealOnScroll [revealDelay]="320">
+      <a class="btn btn-secondary" href="#reel">Ver trabajos</a>
+      <a class="btn btn-primary" href="#contacto">Solicitar presupuesto</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<section id="reel" class="reel container" aria-labelledby="reel-title">
+  <header class="section-heading" appRevealOnScroll>
+    <h2 id="reel-title">Reel de trabajos</h2>
+    <p>Historias capturadas desde el aire para marcas, espacios y experiencias memorables.</p>
+  </header>
+
+  <div class="reel__grid grid">
+    @for (work of workItems; track work.id; let i = $index) {
+      <button
+        type="button"
+        class="reel-card"
+        [style.--delay]="i * 70 + 'ms'"
+        appRevealOnScroll
+        [revealDelay]="i * 70"
+        (click)="openModal(work)"
+      >
+        <img [src]="work.thumbnail" [alt]="work.title" loading="lazy" />
+        <span class="reel-card__category">{{ work.category }}</span>
+        <span class="reel-card__title">{{ work.title }}</span>
+      </button>
+    }
+  </div>
+
+  @if (selectedWork; as current) {
+    <div class="reel-modal" role="dialog" aria-modal="true" [attr.aria-label]="current.title">
+      <button type="button" class="reel-modal__backdrop" (click)="closeModal()" aria-label="Cerrar"></button>
+      <article class="reel-modal__content">
+        <header>
+          <h3>{{ current.title }}</h3>
+          <p>{{ current.category }}</p>
+        </header>
+        <video controls autoplay preload="metadata" [src]="current.videoUrl"></video>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar video</button>
+      </article>
+    </div>
+  }
+</section>

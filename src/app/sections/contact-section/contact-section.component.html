@@ -1,0 +1,77 @@
+<section id="contacto" class="contact" aria-labelledby="contact-title">
+  <div class="container" appRevealOnScroll>
+    <header class="section-heading">
+      <h2 id="contact-title">Solicita tu propuesta personalizada</h2>
+      <p>Cuentanos tu objetivo y disenaremos una produccion aerea a medida.</p>
+    </header>
+
+    <form [formGroup]="contactForm" (ngSubmit)="submit()" novalidate>
+      <label>
+        <span>Nombre</span>
+        <input type="text" formControlName="name" placeholder="Tu nombre" />
+        @if (isInvalid('name')) {
+          <small>Introduce un nombre valido.</small>
+        }
+      </label>
+
+      <label>
+        <span>Empresa</span>
+        <input type="text" formControlName="company" placeholder="Nombre de la empresa" />
+        @if (isInvalid('company')) {
+          <small>Este campo es obligatorio.</small>
+        }
+      </label>
+
+      <label>
+        <span>Telefono</span>
+        <input type="tel" formControlName="phone" placeholder="+34 600 000 000" />
+        @if (isInvalid('phone')) {
+          <small>Introduce un telefono valido.</small>
+        }
+      </label>
+
+      <label>
+        <span>Email</span>
+        <input type="email" formControlName="email" placeholder="contacto@empresa.com" />
+        @if (isInvalid('email')) {
+          <small>Introduce un email valido.</small>
+        }
+      </label>
+
+      <label>
+        <span>Tipo de proyecto</span>
+        <select formControlName="projectType">
+          <option value="" disabled>Selecciona una opcion</option>
+          <option value="eventos">Eventos</option>
+          <option value="inmobiliaria">Inmobiliaria</option>
+          <option value="turismo">Turismo</option>
+          <option value="corporativo">Corporativo</option>
+          <option value="automocion">Automocion</option>
+        </select>
+        @if (isInvalid('projectType')) {
+          <small>Selecciona un tipo de proyecto.</small>
+        }
+      </label>
+
+      <label class="contact__message-field">
+        <span>Mensaje</span>
+        <textarea
+          formControlName="message"
+          rows="5"
+          placeholder="Describe brevemente el proyecto, ubicacion y fechas estimadas"
+        ></textarea>
+        @if (isInvalid('message')) {
+          <small>El mensaje debe tener al menos 20 caracteres.</small>
+        }
+      </label>
+
+      <button type="submit" class="btn btn-primary" [disabled]="sending">
+        {{ sending ? 'Enviando...' : 'Solicitar presupuesto' }}
+      </button>
+
+      @if (sent) {
+        <p class="contact__success" role="status">Tu solicitud se ha enviado correctamente.</p>
+      }
+    </form>
+  </div>
+</section>

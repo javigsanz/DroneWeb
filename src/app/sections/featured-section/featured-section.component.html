@@ -1,0 +1,24 @@
+<section class="featured" aria-labelledby="featured-title">
+  <div class="featured__image-wrap" appRevealOnScroll>
+    <img
+      src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1800&q=80"
+      alt="Vista aerea cinematografica de costa"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="container featured__content">
+    <h2 id="featured-title" appRevealOnScroll>
+      La tecnologia mas avanzada al servicio de tu proyecto.
+    </h2>
+
+    <div class="featured__stats grid">
+      @for (stat of stats; track stat.id; let i = $index) {
+        <article class="stat" appRevealOnScroll [revealDelay]="i * 120">
+          <strong [appCountUp]="stat.value" [suffix]="stat.suffix">0</strong>
+          <p>{{ stat.label }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

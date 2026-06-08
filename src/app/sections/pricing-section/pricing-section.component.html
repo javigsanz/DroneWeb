@@ -1,0 +1,29 @@
+<section class="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <header class="section-heading" appRevealOnScroll>
+      <h2 id="pricing-title">Paquetes de servicios</h2>
+      <p>Formatos flexibles para proyectos de distinta escala con estandar cinematografico.</p>
+    </header>
+
+    <div class="pricing__grid grid">
+      @for (item of packages; track item.id; let i = $index) {
+        <article class="pricing-card" appRevealOnScroll [revealDelay]="i * 90" [class.is-popular]="item.popular">
+          @if (item.popular) {
+            <span class="pricing-card__badge">Mas popular</span>
+          }
+
+          <h3>{{ item.name }}</h3>
+          <p class="pricing-card__price">{{ item.price }}</p>
+
+          <ul>
+            @for (feature of item.features; track feature) {
+              <li>{{ feature }}</li>
+            }
+          </ul>
+
+          <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+        </article>
+      }
+    </div>
+  </div>
+</section>
