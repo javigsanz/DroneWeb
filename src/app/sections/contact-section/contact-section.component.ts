@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
@@ -14,16 +14,18 @@ export class ContactSectionComponent {
   sending = false;
   sent = false;
 
-  readonly contactForm = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    company: ['', [Validators.required]],
-    phone: ['', [Validators.required, Validators.pattern(/^[0-9+\s()-]{7,20}$/)]],
-    email: ['', [Validators.required, Validators.email]],
-    projectType: ['', [Validators.required]],
-    message: ['', [Validators.required, Validators.minLength(20)]]
-  });
+  readonly contactForm: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(private readonly fb: FormBuilder) {
+    this.contactForm = this.fb.nonNullable.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      company: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern(/^[0-9+\s()-]{7,20}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      projectType: ['', [Validators.required]],
+      message: ['', [Validators.required, Validators.minLength(20)]]
+    });
+  }
 
   get formControls() {
     return this.contactForm.controls;
